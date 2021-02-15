@@ -1,8 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder, Dimensions } from 'react-native';
 
 const App = () => {
+  const dimensions = Dimensions.get('window');
   const [locationX, setLocationX] = useState(0);
   const [locationY, setLocationY] = useState(0);
 
@@ -23,23 +24,22 @@ const App = () => {
   });
 
   const onPress = () => {
-    console.log(locationX, locationY)
-    if (locationX > 500) {
-      console.log('nice')
-    }
+    console.log(locationX, locationY, dimensions.height)
   }
 
   return (
     <View style={styles.container} {...panResponder.panHandlers}>
       <TouchableOpacity activeOpacity = { .5 } onPress={onPress}>
-      {/* <View {...panResponder.panHandlers}> */}
         <Image
-          style={styles.drum}
+          style={{
+            height: dimensions.height,
+            width: dimensions.width,
+            resizeMode: 'contain',
+          }}
           source={require('./assets/tongue_drum.png')}
         />
-      {/* </View> */}
-          </TouchableOpacity>
-          <StatusBar style="auto" />
+      </TouchableOpacity>
+      <StatusBar style="auto" />
     </View>
   );
 }
@@ -51,12 +51,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  drum: {
-    flex: 1,
-    width: 400,
-    height: 400,
-    resizeMode: 'contain'
-  }
+  // drum: {
+  //   // flex: 1,
+  //   width: dimensions.width,
+  //   // height: dimensions.height,
+  //   resizeMode: 'contain'
+  // }
 });
 
 export default App;

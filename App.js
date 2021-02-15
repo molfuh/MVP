@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder, Dimensions, Button } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder, Dimensions, Button, Pressable } from 'react-native';
+import { Audio as AudioPlay } from 'expo-av';
 
 const App = () => {
   const dimensions = Dimensions.get('window');
@@ -40,11 +41,19 @@ const App = () => {
       setLocationY(event.nativeEvent.locationY.toFixed(2));
     },
   });
+  const [sound, setSound] = React.useState();
 
-  console.log(midPointX, midPointY)
-  const onPress = () => {
+  // console.log(midPointX, midPointY)
+  const onPress = async () => {
 
-    var audio = new Audio(require('./assets/firstFile.mp3'));
+    const { sound } = await AudioPlay.Sound.createAsync(
+      require('./assets/firstFile.mp3')
+    );
+    setSound(sound);
+    console.log('Playing Sound');
+    await sound.playAsync();
+
+    // var audio = new Audio(require('./assets/firstFile.mp3'));
 
     console.log(Math.floor(locationX), Math.floor(locationY) /*, dimensions.height, dimensions.width*/)
 
@@ -52,9 +61,9 @@ const App = () => {
 
     // if (locationX <= midPointX + 60 && locationX >= midPointX - 60 && (locationY >= midPointY - (dimensions.width / 5.9) - 200) && (locationY <= midPointY - 130)) {
     if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY - (dimensions.width / 5.9) - (dimensions.width / 3.84)) && (locationY <= midPointY - (dimensions.width / 5.9))) {
-
+      console.log('clicked')
       console.log('in 1');
-      audio.play();
+      // audio.play();
     // } else if (locationX >= midPointX + 75 && locationX <= midPointX + 250 && locationY >= midPointY - 200 && locationY <= midPointY - 100) {
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
       // synth.triggerAttackRelease("D4", "4n");
@@ -90,14 +99,38 @@ const App = () => {
       console.log('in 8');
     }
   }
+  // const [recording, setRecording] = React.useState();
 
-  const onPressLearnMore = () => {
-    console.log('pressed');
-  }
+  // const onPressRecord = async() => {
+  //   try {
+  //     console.log('Requesting permissions..');
+  //     await Audio.requestPermissionsAsync();
+  //     await Audio.setAudioModeAsync({
+  //       allowsRecordingIOS: true,
+  //       playsInSilentModeIOS: true,
+  //     });
+  //     console.log('Starting recording..');
+  //     const recording = new Audio.Recording();
+  //     await recording.prepareToRecordAsync(Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY);
+  //     await recording.startAsync();
+  //     setRecording(recording);
+  //     console.log('Recording started');
+  //   } catch (err) {
+  //     console.error('Failed to start recording', err);
+  //   }
+  // }
+
+  // const onPressStopRecord = async() => {
+  //   console.log('Stopping recording..');
+  //   setRecording(undefined);
+  //   await recording.stopAndUnloadAsync();
+  //   const uri = recording.getURI();
+  //   console.log('Recording stopped and stored at', uri);
+  // }
 
   return (
     <View style={styles.container} {...panResponder.panHandlers}>
-      <TouchableOpacity activeOpacity = { .5 } onPress={onPress}>
+      <Pressable onPress={onPress}>
         <Image
           style={{
             height: dimensions.height,
@@ -106,13 +139,19 @@ const App = () => {
           }}
           source={require('./assets/tongue_drum.png')}
         />
-      </TouchableOpacity>
+      </Pressable>
       {/* <View style={styles.button}>
         <Button
-          onPress={onPressLearnMore}
-          title="Set Background Sound"
+          onPress={onPressRecord}
+          title="Record"
           color="#841584"
-          accessibilityLabel="Sets the background sound"
+          accessibilityLabel="records audio"
+        />
+        <Button
+          onPress={onPressStopRecord}
+          title="Stop Recording"
+          color="#841584"
+          accessibilityLabel="records audio"
         />
       </View> */}
       <StatusBar style="auto" />
@@ -127,10 +166,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  // button: {
-  //   position: 'absolute',
-  //   bottom: 50,
-  // }
+  button: {
+    position: 'absolute',
+    bottom: 50,
+  }
   // drum: {
   //   // flex: 1,
   //   width: dimensions.width,

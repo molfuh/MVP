@@ -4,8 +4,24 @@ import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder, D
 
 const App = () => {
   const dimensions = Dimensions.get('window');
+
   const [locationX, setLocationX] = useState(0);
   const [locationY, setLocationY] = useState(0);
+
+  const [imageHeight, setImageHeight] = useState(0);
+  const [imageWidth, setImageWidth] = useState(0);
+
+  Image.getSize(require('./assets/tongue_drum.png'), (width, height) => {setImageHeight(height), setImageWidth(width)}, (e) => {console.log('error: ', e)});
+  // console.log(imageWidth)
+
+  const drumTopX = Math.floor(dimensions.width / 2);
+  const drumTopY = Math.floor((dimensions.height - (dimensions.width * 1.2)) / 2);
+
+  /* DRUM BOTTOM COORDINATES? */
+  const drumBottomX = drumTopX;
+  const drumBottomY = drumTopY;
+  // console.log(drumTopX, drumTopY)
+  console.log(drumBottomX, drumBottomY)
 
   const panResponder = PanResponder.create({
     onStartShouldSetPanResponder: (event, gestureState) => true,
@@ -24,7 +40,9 @@ const App = () => {
   });
 
   const onPress = () => {
-    console.log(locationX, locationY, dimensions.height)
+    console.log(Math.floor(locationX), Math.floor(locationY), dimensions.height, dimensions.width)
+
+
   }
 
   return (
@@ -60,3 +78,8 @@ const styles = StyleSheet.create({
 });
 
 export default App;
+
+/*
+MATH PROBLEM FOR IDENTIFYING TOP PART OF DRUM IMAGE:
+(dimensions.height - (dimensions.width * 1.2)) / 2
+*/

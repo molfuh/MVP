@@ -1,6 +1,6 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder, Dimensions, Button, Pressable } from 'react-native';
+import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder, Dimensions, Button, Pressable, Switch } from 'react-native';
 
 // import { Audio } from 'expo-av';
 
@@ -74,10 +74,9 @@ const Music = () => {
     // if (locationX <= midPointX + 60 && locationX >= midPointX - 60 && (locationY >= midPointY - (dimensions.width / 5.9) - 200) && (locationY <= midPointY - 130)) {
     if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY - (dimensions.width / 5.9) - (dimensions.width / 3.84)) && (locationY <= midPointY - (dimensions.width / 5.9))) {
       console.log('in 1');
-
-      // sound.play();
       sound1.play();
 
+      // console.log(        sound1.loop      )
       // try {
       //   await sound.loadAsync(require('./assets/sounds/MTD_1.mp3'));
       //   // await sound.unloadAsync();
@@ -88,11 +87,13 @@ const Music = () => {
 
     // } else if (locationX >= midPointX + 75 && locationX <= midPointX + 250 && locationY >= midPointY - 200 && locationY <= midPointY - 100) {
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
+
       // synth.triggerAttackRelease("D4", "4n");
       console.log('in 2');
       // new Audio(require('./assets/firstFile.mp3')).play();
       // new Audio(require('./assets/sounds/MTD_2.mp3')).play();
       sound2.play();
+      // sound1.play();
 
     // } else if (locationY <= midPointY + 60 && locationY >= midPointY - 60 && (locationX >= midPointX + 130) && (locationX <= midPointX + 130 + 200)) {
     } else if (locationY <= midPointY + (dimensions.width / 12.8) && locationY >= midPointY - (dimensions.width / 12.8) && (locationX >= midPointX + (dimensions.width / 5.9)) && (locationX <= midPointX + (dimensions.width / 5.9) + (dimensions.width / 3.84))) {
@@ -110,6 +111,7 @@ const Music = () => {
       // synth.triggerAttackRelease("A4", "4n");
       console.log('in 5')
       sound5.play();
+
 
     // } else if (locationX <= midPointX - 75 && locationX >= midPointX - 250 && locationY <= midPointY + 200 && locationY >= midPointY + 100) {
     } else if (locationX <= midPointX - (dimensions.width / 10.24) && locationX >= midPointX - (dimensions.width / 3.072) && locationY <= midPointY + (dimensions.width / 3.84) && locationY >= midPointY + (dimensions.width / 7.68)) {
@@ -178,9 +180,48 @@ const Music = () => {
   //   console.log('Recording stopped and stored at', uri);
   // }
 
+  const handleBeats = (amount = 0) => {
+    if (amount === 4) {
+      return;
+    }
+    const sound1 = new Audio(require('../assets/sounds/MTD_1.mp3'));
+    setTimeout(() => {
+      sound1.play();
+      sound1.loop = true;
+      handleBeats(amount += 1);
+    }, 1930)
+  }
+
+  const [toggle, setToggle] = useState(false);
+  const toggleFunction = () => {
+    setToggle(!toggle);
+    if (!toggle) {
+      handleBeats();
+    }
+  };
   return (
     <View style={styles.container} {...panResponder.panHandlers}>
+      <View style={{
+            position: 'absolute',
+            top: 10,
+            zIndex: 3,
+          }}>
+        <Text>
+          Add Background Beats
+        </Text>
+       <Switch
+          style={{
+            right: 10
+          }}
+          trackColor={{true: 'teal', false: 'gray'}}
+          thumbColor="white"
+          ios_backgroundColor="gray"
+          onValueChange={toggleFunction}
+          value={toggle}
+          />
+        </View>
       <TouchableOpacity onPress={() => drumPress()}>
+
         <Image
           style={{
             height: dimensions.height,

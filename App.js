@@ -11,7 +11,7 @@ const Stack = createStackNavigator();
 const App = () => (
   <NavigationContainer>
     <Stack.Navigator>
-      <Stack.Screen
+      {/* <Stack.Screen
         name="Home"
         component={Home}
         options={{ title: 'Welcome' }}
@@ -19,7 +19,7 @@ const App = () => (
       <Stack.Screen
         name="Greets"
         component={Greets}
-        />
+        /> */}
       <Stack.Screen name="Music" component={Music} />
     </Stack.Navigator>
   </NavigationContainer>

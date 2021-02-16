@@ -92,6 +92,7 @@ const Music = () => {
       console.log('in 2');
       // new Audio(require('./assets/firstFile.mp3')).play();
       // new Audio(require('./assets/sounds/MTD_2.mp3')).play();
+      sound1.play();
       sound2.play();
       // sound1.play();
 
@@ -130,6 +131,104 @@ const Music = () => {
       // synth.triggerAttackRelease("E5", "4n");
       console.log('in 8');
       sound8.play();
+    }
+  }
+  const drumPressEcho = async () => {
+    // Alert.alert('clicked');
+    // console.log('clicked')
+  //   const { sound } = AudioPlay.Sound.createAsync(
+  //     require('./assets/firstFile.mp3')
+  //   );
+  //   setSound(sound);
+  //   console.log('Playing Sound');
+  //  sound.playAsync();
+
+    // initialising Sound as a variable
+
+
+    const sound1 = new Audio(require('../assets/sounds/MTD_1.mp3'));
+    const sound2 = new Audio(require('../assets/sounds/MTD_2.mp3'));
+    const sound3 = new Audio(require('../assets/sounds/MTD_3.mp3'));
+    const sound4 = new Audio(require('../assets/sounds/MTD_4.mp3'));
+    const sound5 = new Audio(require('../assets/sounds/MTD_5.mp3'));
+    const sound6 = new Audio(require('../assets/sounds/MTD_6.mp3'));
+    const sound7 = new Audio(require('../assets/sounds/MTD_7.mp3'));
+    const sound8 = new Audio(require('../assets/sounds/MTD_8.mp3'));
+
+
+    // const sound = new Audio.Sound();
+    // const sound = new Audio(require('./assets/sounds/MTD_1.mp3'));
+
+    console.log(Math.floor(locationX), Math.floor(locationY) /*, dimensions.height, dimensions.width*/)
+
+    // const synth = new Tone.Synth().toDestination();
+    // if (locationX <= midPointX + 60 && locationX >= midPointX - 60 && (locationY >= midPointY - (dimensions.width / 5.9) - 200) && (locationY <= midPointY - 130)) {
+    if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY - (dimensions.width / 5.9) - (dimensions.width / 3.84)) && (locationY <= midPointY - (dimensions.width / 5.9))) {
+      console.log('in 1');
+      sound1.play();
+      sound1.loop = true;
+
+      // console.log(        sound1.loop      )
+      // try {
+      //   await sound.loadAsync(require('./assets/sounds/MTD_1.mp3'));
+      //   // await sound.unloadAsync();
+      // } catch(e) {
+      //   console.log('err in sound: ', e);
+      // }
+      // await sound.playAsync();
+
+    // } else if (locationX >= midPointX + 75 && locationX <= midPointX + 250 && locationY >= midPointY - 200 && locationY <= midPointY - 100) {
+    } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
+
+      // synth.triggerAttackRelease("D4", "4n");
+      console.log('in 2');
+      // new Audio(require('./assets/firstFile.mp3')).play();
+      // new Audio(require('./assets/sounds/MTD_2.mp3')).play();
+      sound1.play();
+      sound2.play();
+      sound2.loop = true;
+      // sound1.play();
+
+    // } else if (locationY <= midPointY + 60 && locationY >= midPointY - 60 && (locationX >= midPointX + 130) && (locationX <= midPointX + 130 + 200)) {
+    } else if (locationY <= midPointY + (dimensions.width / 12.8) && locationY >= midPointY - (dimensions.width / 12.8) && (locationX >= midPointX + (dimensions.width / 5.9)) && (locationX <= midPointX + (dimensions.width / 5.9) + (dimensions.width / 3.84))) {
+      // synth.triggerAttackRelease("E4", "4n");
+      console.log('in 3')
+      sound3.play();
+      sound3.loop = true;
+
+    } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY <= midPointY + (dimensions.width / 3.84) && locationY >= midPointY + (dimensions.width / 7.68)) {
+      // synth.triggerAttackRelease("G4", "4n");
+      console.log('in 4');
+      sound4.play();
+      sound4.loop = true;
+
+    // } else if (locationX <= midPointX + 60 && locationX >= midPointX - 60 && (locationY >= midPointY + 130) && (locationY <= midPointY + 130 + 200)) {
+    } else if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY + (dimensions.width / 5.9)) && (locationY <= midPointY + (dimensions.width / 5.9) + (dimensions.width / 3.84))) {
+      // synth.triggerAttackRelease("A4", "4n");
+      console.log('in 5')
+      sound5.play();
+      sound5.loop = true;
+
+    // } else if (locationX <= midPointX - 75 && locationX >= midPointX - 250 && locationY <= midPointY + 200 && locationY >= midPointY + 100) {
+    } else if (locationX <= midPointX - (dimensions.width / 10.24) && locationX >= midPointX - (dimensions.width / 3.072) && locationY <= midPointY + (dimensions.width / 3.84) && locationY >= midPointY + (dimensions.width / 7.68)) {
+      // synth.triggerAttackRelease("C5", "4n");
+      console.log('in 6');
+      sound6.play();
+      sound6.loop = true;
+
+    // } else if (locationY <= midPointY + 60 && locationY >= midPointY - 60 && (locationX <= midPointX - 130) && (locationX >= midPointX - 130 - 200)) {
+    } else if (locationY <= midPointY + (dimensions.width / 12.8) && locationY >= midPointY - (dimensions.width / 12.8) && (locationX <= midPointX - (dimensions.width / 5.9)) && (locationX >= midPointX - (dimensions.width / 5.9) - (dimensions.width / 3.84))) {
+      // synth.triggerAttackRelease("D5", "4n");
+      console.log('in 7')
+      sound7.play();
+      sound7.loop = true;
+
+    // } else if (locationX <= midPointX - 75 && locationX >= midPointX - 250 && locationY >= midPointY - 200 && locationY <= midPointY - 100) {
+    } else if (locationX <= midPointX - (dimensions.width / 10.24) && locationX >= midPointX - (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
+      // synth.triggerAttackRelease("E5", "4n");
+      console.log('in 8');
+      sound8.play();
+      sound8.loop = true;
     }
   }
   // const [recording, setRecording] = React.useState();
@@ -181,29 +280,41 @@ const Music = () => {
   // }
 
   const handleBeats = (amount = 0) => {
-    if (amount === 4) {
-      return;
+      if (amount === 4) {
+        return;
+      }
+      const sound1 = new Audio(require('../assets/sounds/MTD_1.mp3'));
+      setTimeout(() => {
+        sound1.play();
+        sound1.loop = true;
+        handleBeats(amount += 1, true);
+      }, 1930)
     }
-    const sound1 = new Audio(require('../assets/sounds/MTD_1.mp3'));
-    setTimeout(() => {
-      sound1.play();
-      sound1.loop = true;
-      handleBeats(amount += 1);
-    }, 1930)
-  }
 
-  const [toggle, setToggle] = useState(false);
-  const toggleFunction = () => {
-    setToggle(!toggle);
-    if (!toggle) {
+  // const handleEcho = () => {
+
+  // }
+
+  const [toggleBeats, setToggleBeats] = useState(false);
+  const toggleFunctionBeats = () => {
+    setToggleBeats(!toggleBeats);
+    if (!toggleBeats) {
       handleBeats();
     }
   };
-  return (
-    <View style={styles.container} {...panResponder.panHandlers}>
+
+  const [toggleEcho, setToggleEcho] = useState(false);
+  const toggleFunctionEcho = () => {
+    setToggleEcho(!toggleEcho);
+  };
+
+  if (!toggleEcho) {
+    return (
+      <View style={styles.container} {...panResponder.panHandlers}>
       <View style={{
             position: 'absolute',
             top: 10,
+            left: 0,
             zIndex: 3,
           }}>
         <Text>
@@ -216,8 +327,28 @@ const Music = () => {
           trackColor={{true: 'teal', false: 'gray'}}
           thumbColor="white"
           ios_backgroundColor="gray"
-          onValueChange={toggleFunction}
-          value={toggle}
+          onValueChange={toggleFunctionBeats}
+          value={toggleBeats}
+          />
+        </View>
+      <View style={{
+            position: 'absolute',
+            top: 10,
+            right: 0,
+            zIndex: 3,
+          }}>
+        <Text>
+          Enable echoing
+        </Text>
+       <Switch
+          style={{
+            right: 10
+          }}
+          trackColor={{true: 'teal', false: 'gray'}}
+          thumbColor="white"
+          ios_backgroundColor="gray"
+          onValueChange={() => toggleFunctionEcho()}
+          value={toggleEcho}
           />
         </View>
       <TouchableOpacity onPress={() => drumPress()}>
@@ -247,7 +378,83 @@ const Music = () => {
       </View>
       <StatusBar style="auto" />
     </View>
-  );
+    )
+  } else {
+    return (
+      <View style={styles.container} {...panResponder.panHandlers}>
+      <View style={{
+            position: 'absolute',
+            top: 10,
+            left: 0,
+            zIndex: 3,
+          }}>
+        <Text>
+          Add Background Beats
+        </Text>
+       <Switch
+          style={{
+            right: 10
+          }}
+          trackColor={{true: 'teal', false: 'gray'}}
+          thumbColor="white"
+          ios_backgroundColor="gray"
+          onValueChange={toggleFunctionBeats}
+          value={toggleBeats}
+          />
+        </View>
+      <View style={{
+            position: 'absolute',
+            top: 10,
+            right: 0,
+            zIndex: 3,
+          }}>
+        <Text>
+          Enable echoing
+        </Text>
+       <Switch
+          style={{
+            right: 10
+          }}
+          trackColor={{true: 'teal', false: 'gray'}}
+          thumbColor="white"
+          ios_backgroundColor="gray"
+          onValueChange={() => toggleFunctionEcho()}
+          value={toggleEcho}
+          />
+        </View>
+      <TouchableOpacity onPress={() => drumPressEcho()}>
+
+        <Image
+          style={{
+            height: dimensions.height,
+            width: dimensions.width,
+            resizeMode: 'contain',
+          }}
+          source={require('../assets/tongue_drum.png')}
+        />
+      </TouchableOpacity>
+      <View style={styles.button}>
+        {/* <Button
+          onPress={onPressRecord}
+          title="Record"
+          color="#841584"
+          accessibilityLabel="records audio"
+        />
+        <Button
+          // onPress={onPressStopRecord}
+          title="Stop Recording"
+          color="#841584"
+          accessibilityLabel="records audio"
+        /> */}
+      </View>
+      <StatusBar style="auto" />
+    </View>
+    )
+  }
+
+  // return (
+
+  // );
 }
 
 const styles = StyleSheet.create({

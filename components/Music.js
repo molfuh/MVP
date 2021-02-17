@@ -13,6 +13,7 @@ import {
   Switch,
   FlatList
 } from 'react-native';
+import { Audio as AudioAV } from 'expo-av';
 
 const Music = () => {
   const dimensions = Dimensions.get('window');
@@ -41,6 +42,8 @@ const Music = () => {
     },
   });
 
+  // const [tonic, setTonic] = useState(null);
+
   const drumPress = async (isEcho) => {
     const sound1 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3'));
     const sound2 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_2.mp3'));
@@ -52,12 +55,19 @@ const Music = () => {
     const sound8 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_8.mp3'));
 
     if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY - (dimensions.width / 5.9) - (dimensions.width / 3.84)) && (locationY <= midPointY - (dimensions.width / 5.9))) {
+
+    //   const { sound } = await AudioAV.Sound.createAsync(
+    //     require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
+    //  );
+    //  setTonic(sound);
+    //   await sound.playAsync();
+
       sound1.play();
       if (isEcho) {
         sound1.loop = true;
       }
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
-      sound1.play();
+      sound2.play();
       if (isEcho) {
         sound2.loop = true;
       }
@@ -121,22 +131,32 @@ const Music = () => {
     setToggleEcho(!toggleEcho);
   };
 
-  const [toggleBird, setToggleBird] = useState(false);
+  const [toggleRain, setToggleRain] = useState(false);
+  // const [toggleRainSound, setToggleRainSound] = useState(null);
+
   const [toggleFire, setToggleFire] = useState(false);
   const [toggleTree, setToggleTree] = useState(false);
   const [toggleWater, setToggleWater] = useState(false);
 
-  const togglePlay = (type) => {
-    const bird = new Audio(require('../assets/backing_tracks/TDMBirdsShort.mp3'));
+
+  const togglePlay = async (type) => {
+    const rain = new Audio(require('../assets/backing_tracks/TDMRainShort.mp3'));
     const fire = new Audio(require('../assets/backing_tracks/TDMFireShort.mp3'));
     const tree = new Audio(require('../assets/backing_tracks/TDMForestShort.mp3'));
     const water = new Audio(require('../assets/backing_tracks/TDMStreamShort.mp3'));
 
-    if (type === 'bird') {
-      setToggleBird(!toggleBird);
-      bird.volume = 0.04;
-      bird.play();
-      bird.loop = true;
+    if (type === 'rain') {
+      setToggleRain(!toggleRain);
+
+    //   const { sound } = await AudioAV.Sound.createAsync(
+    //     require('../assets/backing_tracks/TDMRainShort.mp3')
+    //  );
+    //  setToggleRainSound(sound);
+    //   await sound.playAsync();
+
+      rain.volume = 0.06;
+      rain.play();
+      rain.loop = true;
     } else if (type === 'fire') {
       setToggleFire(!toggleFire);
       fire.volume = 0.2;
@@ -204,13 +224,8 @@ const Music = () => {
               zIndex: 3,
             }}>
           <Image
-            style={{
-              height: 30,
-              bottom: 0,
-              left: 40,
-              zIndex: 5,
-            }}
-            source={require('../assets/bird.png')}
+            style={styles.rain}
+            source={require('../assets/rain.png')}
           />
         <Switch
             style={{
@@ -219,8 +234,8 @@ const Music = () => {
             trackColor={{true: 'teal', false: 'gray'}}
             thumbColor="white"
             ios_backgroundColor="gray"
-            onValueChange={() => togglePlay('bird')}
-            value={toggleBird}
+            onValueChange={() => togglePlay('rain')}
+            value={toggleRain}
             />
           </View>
         <View style={{
@@ -357,13 +372,8 @@ const Music = () => {
               zIndex: 3,
             }}>
           <Image
-            style={{
-              height: 30,
-              bottom: 0,
-              left: 40,
-              zIndex: 5,
-            }}
-            source={require('../assets/bird.png')}
+            style={styles.rain}
+            source={require('../assets/rain.png')}
           />
         <Switch
             style={{
@@ -372,8 +382,8 @@ const Music = () => {
             trackColor={{true: 'teal', false: 'gray'}}
             thumbColor="white"
             ios_backgroundColor="gray"
-            onValueChange={() => togglePlay('bird')}
-            value={toggleBird}
+            onValueChange={() => togglePlay('rain')}
+            value={toggleRain}
             />
           </View>
         <View style={{
@@ -494,6 +504,13 @@ const styles = StyleSheet.create({
   },
   beatsToggle: {
     left: 50,
+  },
+  rain: {
+    height: 34,
+    width: 33,
+    bottom: 0,
+    left: 38,
+    zIndex: 5,
   }
 });
 

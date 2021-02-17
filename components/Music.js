@@ -232,7 +232,7 @@ const Music = () => {
           <Image
             style={{
               height: 30,
-              width: 23,
+              width: 27,
               bottom: 0,
               left: 40,
               zIndex: 5,
@@ -385,7 +385,7 @@ const Music = () => {
           <Image
             style={{
               height: 30,
-              width: 23,
+              width: 27,
               bottom: 0,
               left: 40,
               zIndex: 5,

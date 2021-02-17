@@ -4,16 +4,18 @@ import {
   Text,
   View,
   Image,
-  TouchableOpacity,
+  // TouchableOpacity,
   Alert,
   PanResponder,
   Dimensions,
   Button,
   Pressable,
   Switch,
-  FlatList
+  FlatList,
+  // TouchableWithoutFeedback,
 } from 'react-native';
 import { Audio as AudioAV } from 'expo-av';
+import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 
 const Music = () => {
   const dimensions = Dimensions.get('window');
@@ -43,6 +45,8 @@ const Music = () => {
   });
 
   const [tonic, setTonic] = useState(null);
+  // const [tonicEcho, setTonicEcho] = useState(null);
+
   const [superTonic, setSuperTonic] = useState(null);
   const [mediant, setMediant] = useState(null);
   const [subdominant, setSubdominant] = useState(null);
@@ -51,15 +55,33 @@ const Music = () => {
   const [subtonic, setSubTonic] = useState(null);
   const [octave, setOctave] = useState(null);
 
+  // useEffect(() => {
+  //   if (tonic) {
+  //     tonic.playAsync();
+  //   }
+  // }, [tonic])
+
+  // useEffect(() => {
+  //   console.log(tonic)
+  //   if (tonicEcho) {
+  //     tonic.setIsLoopingAsync(true);
+  //   } else if (tonicEcho === false) {
+  //     tonic.unloadAsync();
+  //     tonic.setIsLoopingAsync(false);
+  //   }
+  // }, [tonicEcho])
+
+  //to do: add results of drum press to state and when certin button is clicked to silence all, make them all be quiet
   const drumPress = async (isEcho) => {
-    const sound1 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3'));
-    const sound2 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_2.mp3'));
-    const sound3 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_3.mp3'));
-    const sound4 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_4.mp3'));
-    const sound5 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_5.mp3'));
-    const sound6 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_6.mp3'));
-    const sound7 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_7.mp3'));
-    const sound8 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_8.mp3'));
+    // Alert.alert('hello')
+    // const sound1 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3'));
+    // const sound2 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_2.mp3'));
+    // const sound3 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_3.mp3'));
+    // const sound4 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_4.mp3'));
+    // const sound5 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_5.mp3'));
+    // const sound6 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_6.mp3'));
+    // const sound7 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_7.mp3'));
+    // const sound8 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_8.mp3'));
 
     if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY - (dimensions.width / 5.9) - (dimensions.width / 3.84)) && (locationY <= midPointY - (dimensions.width / 5.9))) {
 
@@ -69,8 +91,12 @@ const Music = () => {
       setTonic(sound1);
       await sound1.playAsync();
 
+        // console.log(isEcho)
       if (isEcho) {
         sound1.setIsLoopingAsync(true);
+        // setTonicEcho(true)
+      // } else if (isEcho === false) {
+      //   setTonicEcho(false)
       }
 
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
@@ -352,9 +378,7 @@ const Music = () => {
           Enable echoing
         </Text>
        <Switch
-          style={{
-            left: 30,
-          }}
+          style={styles.echoToggle}
           trackColor={{true: 'teal', false: 'gray'}}
           thumbColor="white"
           ios_backgroundColor="gray"
@@ -362,7 +386,7 @@ const Music = () => {
           value={toggleEcho}
           />
         </View>
-      <TouchableOpacity onPress={() => drumPress(false)}>
+      <TouchableWithoutFeedback onPress={() => drumPress(false)}>
         <Image
           style={{
             height: dimensions.height,
@@ -371,7 +395,7 @@ const Music = () => {
           }}
           source={require('../assets/tongue_drum.png')}
         />
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
       <View style={styles.symbolContainer}>
         <View style={{
               position: 'absolute',
@@ -405,8 +429,9 @@ const Music = () => {
               height: 30,
               width: 27,
               bottom: 0,
-              left: 40,
+              left: 45,
               zIndex: 5,
+              bottom: 5,
             }}
             source={require('../assets/fire.png')}
           />
@@ -499,9 +524,7 @@ const Music = () => {
           Enable echoing
         </Text>
        <Switch
-          style={{
-            left: 30,
-          }}
+          style={styles.echoToggle}
           trackColor={{true: 'teal', false: 'gray'}}
           thumbColor="white"
           ios_backgroundColor="gray"
@@ -509,8 +532,7 @@ const Music = () => {
           value={toggleEcho}
           />
         </View>
-      <TouchableOpacity onPress={() => drumPress(true)}>
-
+      <TouchableWithoutFeedback onPress={() => drumPress(true)}>
         <Image
           style={{
             height: dimensions.height,
@@ -519,7 +541,7 @@ const Music = () => {
           }}
           source={require('../assets/tongue_drum.png')}
         />
-      </TouchableOpacity>
+      </TouchableWithoutFeedback>
       <View style={styles.symbolContainer}>
         <View style={{
               position: 'absolute',
@@ -553,8 +575,9 @@ const Music = () => {
               height: 30,
               width: 27,
               bottom: 0,
-              left: 40,
+              left: 45,
               zIndex: 5,
+              bottom: 5,
             }}
             source={require('../assets/fire.png')}
           />
@@ -642,13 +665,13 @@ const styles = StyleSheet.create({
   },
   backgroundBeats: {
     position: 'absolute',
-    top: 10,
+    top: 50,
     left: 10,
     zIndex: 3,
   },
   echo: {
     position: 'absolute',
-    top: 10,
+    top: 50,
     right: 10,
     zIndex: 3,
   },
@@ -659,7 +682,11 @@ const styles = StyleSheet.create({
     width: 60,
   },
   beatsToggle: {
+    top: 10,
     left: 50,
+  },
+  echoToggle: {
+    left: 30,
   },
   rain: {
     height: 34,

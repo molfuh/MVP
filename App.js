@@ -1,62 +1,29 @@
-import { StatusBar } from 'expo-status-bar';
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Image, TouchableOpacity, Alert, PanResponder } from 'react-native';
+import React from 'react';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import Music from './components/Music.js';
+import Home from './components/Home.js';
+import Greets from './components/Greets.js';
 
-const App = () => {
-  const [locationX, setLocationX] = useState(0);
-  const [locationY, setLocationY] = useState(0);
+const Stack = createStackNavigator();
 
-  const panResponder = PanResponder.create({
-    onStartShouldSetPanResponder: (event, gestureState) => true,
-    onStartShouldSetPanResponderCapture:
-      (event, gestureState) => true,
-    onMoveShouldSetPanResponder: (event, gestureState) => false,
-    onMoveShouldSetPanResponderCapture:
-      (event, gestureState) => false,
-    onPanResponderGrant: (event, gestureState) => false,
-    onPanResponderMove: (event, gestureState) => false,
-    onPanResponderRelease: (event, gestureState) => {
-      //After the change in the location
-      setLocationX(event.nativeEvent.locationX.toFixed(2));
-      setLocationY(event.nativeEvent.locationY.toFixed(2));
-    },
-  });
-
-  const onPress = () => {
-    console.log(locationX, locationY)
-    if (locationX > 500) {
-      console.log('nice')
-    }
-  }
-
-  return (
-    <View style={styles.container} {...panResponder.panHandlers}>
-      <TouchableOpacity activeOpacity = { .5 } onPress={onPress}>
-      {/* <View {...panResponder.panHandlers}> */}
-        <Image
-          style={styles.drum}
-          source={require('./assets/tongue_drum.png')}
-        />
-      {/* </View> */}
-          </TouchableOpacity>
-          <StatusBar style="auto" />
-    </View>
-  );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  drum: {
-    flex: 1,
-    width: 400,
-    height: 400,
-    resizeMode: 'contain'
-  }
-});
+const App = () => (
+  <Music />
+  // <NavigationContainer>
+  //   <Stack.Navigator>
+  //     {/* <Stack.Screen
+  //       name="Home"
+  //       component={Home}
+  //       options={{ title: 'Welcome' }}
+  //       />
+  //     <Stack.Screen
+  //       name="Greets"
+  //       component={Greets}
+  //       /> */}
+  //     <Stack.Screen name="Music" component={Music} />
+  //   </Stack.Navigator>
+  // </NavigationContainer>
+)
 
 export default App;

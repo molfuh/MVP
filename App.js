@@ -9,20 +9,21 @@ import Greets from './components/Greets.js';
 const Stack = createStackNavigator();
 
 const App = () => (
-  <NavigationContainer>
-    <Stack.Navigator>
-      {/* <Stack.Screen
-        name="Home"
-        component={Home}
-        options={{ title: 'Welcome' }}
-        />
-      <Stack.Screen
-        name="Greets"
-        component={Greets}
-        /> */}
-      <Stack.Screen name="Music" component={Music} />
-    </Stack.Navigator>
-  </NavigationContainer>
+  <Music />
+  // <NavigationContainer>
+  //   <Stack.Navigator>
+  //     {/* <Stack.Screen
+  //       name="Home"
+  //       component={Home}
+  //       options={{ title: 'Welcome' }}
+  //       />
+  //     <Stack.Screen
+  //       name="Greets"
+  //       component={Greets}
+  //       /> */}
+  //     <Stack.Screen name="Music" component={Music} />
+  //   </Stack.Navigator>
+  // </NavigationContainer>
 )
 
 export default App;

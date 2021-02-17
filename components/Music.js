@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -42,7 +42,14 @@ const Music = () => {
     },
   });
 
-  // const [tonic, setTonic] = useState(null);
+  const [tonic, setTonic] = useState(null);
+  const [superTonic, setSuperTonic] = useState(null);
+  const [mediant, setMediant] = useState(null);
+  const [subdominant, setSubdominant] = useState(null);
+  const [dominant, setDominant] = useState(null);
+  const [submediant, setSubmediant] = useState(null);
+  const [subtonic, setSubTonic] = useState(null);
+  const [octave, setOctave] = useState(null);
 
   const drumPress = async (isEcho) => {
     const sound1 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3'));
@@ -56,122 +63,271 @@ const Music = () => {
 
     if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY - (dimensions.width / 5.9) - (dimensions.width / 3.84)) && (locationY <= midPointY - (dimensions.width / 5.9))) {
 
-    //   const { sound } = await AudioAV.Sound.createAsync(
-    //     require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
-    //  );
-    //  setTonic(sound);
-    //   await sound.playAsync();
+      const { sound: sound1 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
+      );
+      setTonic(sound1);
+      await sound1.playAsync();
 
-      sound1.play();
       if (isEcho) {
-        sound1.loop = true;
+        sound1.setIsLoopingAsync(true);
       }
+
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
-      sound2.play();
+
+      const { sound: sound2 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_2.mp3')
+      );
+      setSuperTonic(sound2);
+      await sound2.playAsync();
+
       if (isEcho) {
-        sound2.loop = true;
+        sound2.setIsLoopingAsync(true);
       }
+
     } else if (locationY <= midPointY + (dimensions.width / 12.8) && locationY >= midPointY - (dimensions.width / 12.8) && (locationX >= midPointX + (dimensions.width / 5.9)) && (locationX <= midPointX + (dimensions.width / 5.9) + (dimensions.width / 3.84))) {
-      sound3.play();
+
+      const { sound: sound3 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_3.mp3')
+      );
+      setMediant(sound3);
+      await sound3.playAsync();
+
       if (isEcho) {
-        sound3.loop = true;
+        sound3.setIsLoopingAsync(true);
       }
+
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY <= midPointY + (dimensions.width / 3.84) && locationY >= midPointY + (dimensions.width / 7.68)) {
-      sound4.play();
+
+      const { sound: sound4 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_4.mp3')
+      );
+      setSubdominant(sound4);
+      await sound4.playAsync();
+
       if (isEcho) {
-        sound4.loop = true;
+        sound4.setIsLoopingAsync(true);
       }
+
     } else if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY + (dimensions.width / 5.9)) && (locationY <= midPointY + (dimensions.width / 5.9) + (dimensions.width / 3.84))) {
-      sound5.play();
+
+      const { sound: sound5 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_5.mp3')
+      );
+      setDominant(sound5);
+      await sound5.playAsync();
+
       if (isEcho) {
-        sound5.loop = true;
+        sound5.setIsLoopingAsync(true);
       }
+
     } else if (locationX <= midPointX - (dimensions.width / 10.24) && locationX >= midPointX - (dimensions.width / 3.072) && locationY <= midPointY + (dimensions.width / 3.84) && locationY >= midPointY + (dimensions.width / 7.68)) {
-      sound6.play();
+
+      const { sound: sound6 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_6.mp3')
+      );
+      setSubmediant(sound6);
+      await sound6.playAsync();
+
       if (isEcho) {
-        sound6.loop = true;
+        sound6.setIsLoopingAsync(true);
       }
+
     } else if (locationY <= midPointY + (dimensions.width / 12.8) && locationY >= midPointY - (dimensions.width / 12.8) && (locationX <= midPointX - (dimensions.width / 5.9)) && (locationX >= midPointX - (dimensions.width / 5.9) - (dimensions.width / 3.84))) {
-      sound7.play();
+
+      const { sound: sound7 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_7.mp3')
+      );
+      setSubTonic(sound7);
+      await sound7.playAsync();
+
       if (isEcho) {
-        sound7.loop = true;
+        sound7.setIsLoopingAsync(true);
       }
     } else if (locationX <= midPointX - (dimensions.width / 10.24) && locationX >= midPointX - (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
-      sound8.play();
+
+      const { sound: sound8 } = await AudioAV.Sound.createAsync(
+        require('../assets/sounds/tongue_drum_sounds/MTD_8.mp3')
+      );
+      setOctave(sound8);
+      await sound8.playAsync();
+
       if (isEcho) {
-        sound8.loop = true;
+        sound8.setIsLoopingAsync(true);
       }
     }
   }
 
-
-  const handleBeats = (amount = 0) => {
-      if (amount === 4) {
-        return;
-      }
-      const sound1 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3'));
-      setTimeout(() => {
-        sound1.play();
-        sound1.loop = true;
-        handleBeats(amount += 1, true);
-      }, 1930)
+  const handleBeats = async (sound, time) => {
+      setTimeout(async () => {
+        await sound.playAsync();
+        sound.setIsLoopingAsync(true);
+      }, time)
     }
 
+    const [beat1, setBeat1] = useState(null);
+    const [beat2, setBeat2] = useState(null);
+    const [beat3, setBeat3] = useState(null);
+    const [beat4, setBeat4] = useState(null);
+
+    useEffect(() => {
+      if (beat1) {
+        handleBeats(beat1, 1950);
+      }
+    }, [beat1])
+
+    useEffect(() => {
+      if (beat2) {
+        handleBeats(beat2, 3900);
+      }
+    }, [beat2])
+
+    useEffect(() => {
+      if (beat3) {
+        handleBeats(beat3, 5850);
+      }
+    }, [beat3])
+
+    useEffect(() => {
+      if (beat4) {
+        handleBeats(beat4, 7800);
+      }
+    }, [beat4])
 
   const [toggleBeats, setToggleBeats] = useState(false);
-  const toggleFunctionBeats = () => {
+
+  const toggleFunctionBeats = async () => {
+    const { sound: sound1 } = await AudioAV.Sound.createAsync(
+      require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
+    );
+    const { sound: sound2 } = await AudioAV.Sound.createAsync(
+      require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
+    );
+    const { sound: sound3 } = await AudioAV.Sound.createAsync(
+      require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
+    );
+    const { sound: sound4 } = await AudioAV.Sound.createAsync(
+      require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
+    );
+
     setToggleBeats(!toggleBeats);
     if (!toggleBeats) {
-      handleBeats();
+      await setBeat1(sound1);
+      await setBeat2(sound2);
+      await setBeat3(sound3);
+      await setBeat4(sound4);
+    } else if (toggleBeats) {
+      beat1.unloadAsync();
+      beat2.unloadAsync();
+      beat3.unloadAsync();
+      beat4.unloadAsync();
     }
   };
 
   const [toggleEcho, setToggleEcho] = useState(false);
+
+  // useEffect(() => {
+  //   if (toggleEcho) {
+  //     console.log('Yes echo!')
+  //   }
+  // }, [toggleEcho])
+
   const toggleFunctionEcho = () => {
     setToggleEcho(!toggleEcho);
   };
 
   const [toggleRain, setToggleRain] = useState(false);
-  // const [toggleRainSound, setToggleRainSound] = useState(null);
+  const [toggleRainSound, setToggleRainSound] = useState(null);
 
   const [toggleFire, setToggleFire] = useState(false);
-  const [toggleTree, setToggleTree] = useState(false);
-  const [toggleWater, setToggleWater] = useState(false);
+  const [toggleFireSound, setToggleFireSound] = useState(null);
 
+  const [toggleTree, setToggleTree] = useState(false);
+  const [toggleTreeSound, setToggleTreeSound] = useState(null);
+
+  const [toggleWater, setToggleWater] = useState(false);
+  const [toggleWaterSound, setToggleWaterSound] = useState(null);
+
+  useEffect(() => {
+    if (toggleRain) {
+      toggleRainSound.playAsync();
+      toggleRainSound.setIsLoopingAsync(true);
+      toggleRainSound.setVolumeAsync(0.06)
+    }
+  }, [toggleRainSound])
+
+  useEffect(() => {
+    if (toggleFire) {
+      toggleFireSound.playAsync();
+      toggleFireSound.setIsLoopingAsync(true);
+      toggleFireSound.setVolumeAsync(0.12)
+    }
+  }, [toggleFireSound])
+
+  useEffect(() => {
+    if (toggleTree) {
+      toggleTreeSound.playAsync();
+      toggleTreeSound.setIsLoopingAsync(true);
+      toggleTreeSound.setVolumeAsync(0.12)
+    }
+  }, [toggleTreeSound])
+
+  useEffect(() => {
+    if (toggleWater) {
+      toggleWaterSound.playAsync();
+      toggleWaterSound.setIsLoopingAsync(true);
+      toggleWaterSound.setVolumeAsync(0.02)
+    }
+  }, [toggleWaterSound])
 
   const togglePlay = async (type) => {
-    const rain = new Audio(require('../assets/backing_tracks/TDMRainShort.mp3'));
-    const fire = new Audio(require('../assets/backing_tracks/TDMFireShort.mp3'));
-    const tree = new Audio(require('../assets/backing_tracks/TDMForestShort.mp3'));
-    const water = new Audio(require('../assets/backing_tracks/TDMStreamShort.mp3'));
+
+    const { sound: rain } = await AudioAV.Sound.createAsync(
+      require('../assets/backing_tracks/TDMRainShort.mp3')
+    );
+
+    const { sound: fire } = await AudioAV.Sound.createAsync(
+      require('../assets/backing_tracks/TDMFireShort.mp3')
+    );
+
+    const { sound: tree } = await AudioAV.Sound.createAsync(
+      require('../assets/backing_tracks/TDMForestShort.mp3')
+    );
+
+    const { sound: water } = await AudioAV.Sound.createAsync(
+      require('../assets/backing_tracks/TDMStreamShort.mp3')
+    );
 
     if (type === 'rain') {
       setToggleRain(!toggleRain);
+      setToggleRainSound(rain);
 
-    //   const { sound } = await AudioAV.Sound.createAsync(
-    //     require('../assets/backing_tracks/TDMRainShort.mp3')
-    //  );
-    //  setToggleRainSound(sound);
-    //   await sound.playAsync();
+      if (toggleRain) {
+        toggleRainSound.unloadAsync();
+      }
 
-      rain.volume = 0.06;
-      rain.play();
-      rain.loop = true;
     } else if (type === 'fire') {
       setToggleFire(!toggleFire);
-      fire.volume = 0.2;
-      fire.play();
-      fire.loop = true;
+      setToggleFireSound(fire);
+
+      if (toggleFire) {
+        toggleFireSound.unloadAsync();
+      }
+
     } else if (type === 'tree') {
       setToggleTree(!toggleTree);
-      tree.volume = 0.2;
-      tree.play();
-      tree.loop = true;
+      setToggleTreeSound(tree);
+
+      if (toggleTree) {
+        toggleTreeSound.unloadAsync();
+      }
     } else if (type === 'water') {
       setToggleWater(!toggleWater);
-      water.volume = 0.04;
-      water.play();
-      water.loop = true;
+      setToggleWaterSound(water);
+
+      if (toggleWater) {
+        toggleWaterSound.unloadAsync();
+      }
     }
   }
 

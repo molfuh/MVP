@@ -55,11 +55,53 @@ const Music = () => {
   const [subtonic, setSubTonic] = useState(null);
   const [octave, setOctave] = useState(null);
 
-  // useEffect(() => {
-  //   if (tonic) {
-  //     tonic.playAsync();
-  //   }
-  // }, [tonic])
+  useEffect(() => {
+    if (tonic) {
+      tonic.playAsync();
+    }
+  }, [tonic])
+
+  useEffect(() => {
+    if (superTonic) {
+      superTonic.playAsync();
+    }
+  }, [superTonic])
+
+  useEffect(() => {
+    if (mediant) {
+      mediant.playAsync();
+    }
+  }, [mediant])
+
+  useEffect(() => {
+    if (subdominant) {
+      subdominant.playAsync();
+    }
+  }, [subdominant])
+
+  useEffect(() => {
+    if (dominant) {
+      dominant.playAsync();
+    }
+  }, [dominant])
+
+  useEffect(() => {
+    if (submediant) {
+      submediant.playAsync();
+    }
+  }, [submediant])
+
+  useEffect(() => {
+    if (subtonic) {
+      subtonic.playAsync();
+    }
+  }, [subtonic])
+
+  useEffect(() => {
+    if (octave) {
+      octave.playAsync();
+    }
+  }, [octave])
 
   // useEffect(() => {
   //   console.log(tonic)
@@ -88,16 +130,21 @@ const Music = () => {
       const { sound: sound1 } = await AudioAV.Sound.createAsync(
         require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3')
       );
-      setTonic(sound1);
-      await sound1.playAsync();
 
-        // console.log(isEcho)
+      setTonic(sound1);
+
       if (isEcho) {
-        sound1.setIsLoopingAsync(true);
-        // setTonicEcho(true)
-      // } else if (isEcho === false) {
-      //   setTonicEcho(false)
+        tonic.setIsLoopingAsync(true);
       }
+      // await tonic.playAsync();
+
+      // console.log(isEcho)
+      // if (isEcho) {
+      //   tonic.setIsLoopingAsync(true);
+      //   // setTonicEcho(true)
+      // // } else if (isEcho === false) {
+      // //   setTonicEcho(false)
+      // }
 
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
 
@@ -105,10 +152,10 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_2.mp3')
       );
       setSuperTonic(sound2);
-      await sound2.playAsync();
+      // await superTonic.playAsync();
 
       if (isEcho) {
-        sound2.setIsLoopingAsync(true);
+        superTonic.setIsLoopingAsync(true);
       }
 
     } else if (locationY <= midPointY + (dimensions.width / 12.8) && locationY >= midPointY - (dimensions.width / 12.8) && (locationX >= midPointX + (dimensions.width / 5.9)) && (locationX <= midPointX + (dimensions.width / 5.9) + (dimensions.width / 3.84))) {
@@ -117,10 +164,10 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_3.mp3')
       );
       setMediant(sound3);
-      await sound3.playAsync();
+      // await mediant.playAsync();
 
       if (isEcho) {
-        sound3.setIsLoopingAsync(true);
+        mediant.setIsLoopingAsync(true);
       }
 
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY <= midPointY + (dimensions.width / 3.84) && locationY >= midPointY + (dimensions.width / 7.68)) {
@@ -129,10 +176,10 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_4.mp3')
       );
       setSubdominant(sound4);
-      await sound4.playAsync();
+      // await subdominant.playAsync();
 
       if (isEcho) {
-        sound4.setIsLoopingAsync(true);
+        subdominant.setIsLoopingAsync(true);
       }
 
     } else if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY + (dimensions.width / 5.9)) && (locationY <= midPointY + (dimensions.width / 5.9) + (dimensions.width / 3.84))) {
@@ -141,10 +188,10 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_5.mp3')
       );
       setDominant(sound5);
-      await sound5.playAsync();
+      // await dominant.playAsync();
 
       if (isEcho) {
-        sound5.setIsLoopingAsync(true);
+        dominant.setIsLoopingAsync(true);
       }
 
     } else if (locationX <= midPointX - (dimensions.width / 10.24) && locationX >= midPointX - (dimensions.width / 3.072) && locationY <= midPointY + (dimensions.width / 3.84) && locationY >= midPointY + (dimensions.width / 7.68)) {
@@ -153,10 +200,10 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_6.mp3')
       );
       setSubmediant(sound6);
-      await sound6.playAsync();
+      // await submediant.playAsync();
 
       if (isEcho) {
-        sound6.setIsLoopingAsync(true);
+        submediant.setIsLoopingAsync(true);
       }
 
     } else if (locationY <= midPointY + (dimensions.width / 12.8) && locationY >= midPointY - (dimensions.width / 12.8) && (locationX <= midPointX - (dimensions.width / 5.9)) && (locationX >= midPointX - (dimensions.width / 5.9) - (dimensions.width / 3.84))) {
@@ -165,10 +212,10 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_7.mp3')
       );
       setSubTonic(sound7);
-      await sound7.playAsync();
+      // await subtonic.playAsync();
 
       if (isEcho) {
-        sound7.setIsLoopingAsync(true);
+        subtonic.setIsLoopingAsync(true);
       }
     } else if (locationX <= midPointX - (dimensions.width / 10.24) && locationX >= midPointX - (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
 
@@ -176,10 +223,10 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_8.mp3')
       );
       setOctave(sound8);
-      await sound8.playAsync();
+      // await octave.playAsync();
 
       if (isEcho) {
-        sound8.setIsLoopingAsync(true);
+        octave.setIsLoopingAsync(true);
       }
     }
   }
@@ -253,8 +300,8 @@ const Music = () => {
   const [toggleEcho, setToggleEcho] = useState(false);
 
   // useEffect(() => {
-  //   if (toggleEcho) {
-  //     console.log('Yes echo!')
+  //   if (!toggleEcho && superTonic) {
+  //     superTonic.unloadAsync();
   //   }
   // }, [toggleEcho])
 
@@ -382,7 +429,7 @@ const Music = () => {
           trackColor={{true: 'teal', false: 'gray'}}
           thumbColor="white"
           ios_backgroundColor="gray"
-          onValueChange={() => toggleFunctionEcho()}
+          onValueChange={toggleFunctionEcho}
           value={toggleEcho}
           />
         </View>
@@ -528,7 +575,7 @@ const Music = () => {
           trackColor={{true: 'teal', false: 'gray'}}
           thumbColor="white"
           ios_backgroundColor="gray"
-          onValueChange={() => toggleFunctionEcho()}
+          onValueChange={toggleFunctionEcho}
           value={toggleEcho}
           />
         </View>

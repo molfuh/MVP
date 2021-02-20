@@ -9,29 +9,20 @@ Oh, and I also like to write press-releases in what I call "Oprah-speak" for mai
 Once the project moves into development, the press release can be used as a touchstone; a guiding light. The product team can ask themselves, "Are we building what is in the press release?" If they find they're spending time building things that aren't in the press release (overbuilding), they need to ask themselves why. This keeps product development focused on achieving the customer benefits and not building extraneous stuff that takes longer to build, takes resources to maintain, and doesn't provide real customer benefit (at least not enough to warrant inclusion in the press release).
  -->
 ## Heading ##
-  > Name the product in a way the reader (i.e. your target customers) will understand.
   Meditative Musical Drum
 ## Sub-Heading ##
-  > Describe who the market for the product is and what benefit they get. One sentence only underneath the title.
   For relaxation, creative expression, or just fun!
 ## Summary ##
-  > Give a summary of the product and the benefit. Assume the reader will not read anything else so make this paragraph good.
-  This app simulates a real-life tongue drum - played with your fingers! It is designed so that every note played harmonizes perfectly with the note before and after it. This means everybody can play and make music!
+  This app simulates a real-life tone steel drum - played through an app! It is designed so that every note played sounds beautiful with the note before and after it. This means everybody can play and make music!
 ## Problem ##
-  > Describe the problem your product solves.
   Instruments are expensive and hard to learn, which can be frustrating. You also may not be able to play music in every environment.
 ## Solution ##
-  > Describe how your product elegantly solves the problem.
   Meditative musical drum makes improvising music easy and enjoyable. Imagine a musical instrument you can fit in your pocket and play anywhere - now it's here! Engaging in and creating music can improve mood and provide a sense of fulfillment.
 ## Quote from You ##
-  > A quote from a spokesperson in your company.
   As a board-certified music therapist, I know how impactful making music can be - let yourself make music without reservation or embarrassment with Meditative Musical Drum!
 ## How to Get Started ##
-  > Describe how easy it is to get started.
-  Just open the app, click "Create new music", and begin playing! You can record your musical masterpieces and share them with friends. You can also make some changes to make your drum sound the way _you_ want it to! Just go to the musical note in the top right corner and make your adjustments.
+  Just open the app and begin playing! You can customize and add peaceful background sounds to your content. You can also adjust your drum to have a background beat or an echo.
 ## Customer Quote ##
-  > Provide a quote from a hypothetical customer that describes how they experienced the benefit.
-  Whenever I'm stressed from work, I love to open up my _Meditative Musical Drum_ and either listen to some of my creations or make my own - it's the perfect way to make music without pressure!s
+  Whenever I'm stressed from work, I love to open up my _Meditative Musical Drum_ and make music - it's the perfect way to express myself without pressure!
 ## Closing and Call to Action ##
-  > Wrap it up and give pointers where the reader should go next.
   Tweet your creations @meditativemusicaldrum for a chance for them to be featured!

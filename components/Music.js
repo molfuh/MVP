@@ -4,7 +4,6 @@ import {
   Text,
   View,
   Image,
-  // TouchableOpacity,
   Alert,
   PanResponder,
   Dimensions,
@@ -12,7 +11,6 @@ import {
   Pressable,
   Switch,
   FlatList,
-  // TouchableWithoutFeedback,
 } from 'react-native';
 import { Audio as AudioAV } from 'expo-av';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
@@ -45,8 +43,6 @@ const Music = () => {
   });
 
   const [tonic, setTonic] = useState(null);
-  // const [tonicEcho, setTonicEcho] = useState(null);
-
   const [superTonic, setSuperTonic] = useState(null);
   const [mediant, setMediant] = useState(null);
   const [subdominant, setSubdominant] = useState(null);
@@ -103,27 +99,8 @@ const Music = () => {
     }
   }, [octave])
 
-  // useEffect(() => {
-  //   console.log(tonic)
-  //   if (tonicEcho) {
-  //     tonic.setIsLoopingAsync(true);
-  //   } else if (tonicEcho === false) {
-  //     tonic.unloadAsync();
-  //     tonic.setIsLoopingAsync(false);
-  //   }
-  // }, [tonicEcho])
-
   //to do: add results of drum press to state and when certin button is clicked to silence all, make them all be quiet
   const drumPress = async (isEcho) => {
-    // Alert.alert('hello')
-    // const sound1 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_1.mp3'));
-    // const sound2 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_2.mp3'));
-    // const sound3 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_3.mp3'));
-    // const sound4 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_4.mp3'));
-    // const sound5 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_5.mp3'));
-    // const sound6 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_6.mp3'));
-    // const sound7 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_7.mp3'));
-    // const sound8 = new Audio(require('../assets/sounds/tongue_drum_sounds/MTD_8.mp3'));
 
     if (locationX <= midPointX + (dimensions.width / 12.8) && locationX >= midPointX - (dimensions.width / 12.8) && (locationY >= midPointY - (dimensions.width / 5.9) - (dimensions.width / 3.84)) && (locationY <= midPointY - (dimensions.width / 5.9))) {
 
@@ -136,15 +113,6 @@ const Music = () => {
       if (isEcho) {
         tonic.setIsLoopingAsync(true);
       }
-      // await tonic.playAsync();
-
-      // console.log(isEcho)
-      // if (isEcho) {
-      //   tonic.setIsLoopingAsync(true);
-      //   // setTonicEcho(true)
-      // // } else if (isEcho === false) {
-      // //   setTonicEcho(false)
-      // }
 
     } else if (locationX >= midPointX + (dimensions.width / 10.24) && locationX <= midPointX + (dimensions.width / 3.072) && locationY >= midPointY - (dimensions.width / 3.84) && locationY <= midPointY - (dimensions.width / 7.68)) {
 
@@ -152,7 +120,6 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_2.mp3')
       );
       setSuperTonic(sound2);
-      // await superTonic.playAsync();
 
       if (isEcho) {
         superTonic.setIsLoopingAsync(true);
@@ -164,7 +131,6 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_3.mp3')
       );
       setMediant(sound3);
-      // await mediant.playAsync();
 
       if (isEcho) {
         mediant.setIsLoopingAsync(true);
@@ -176,7 +142,6 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_4.mp3')
       );
       setSubdominant(sound4);
-      // await subdominant.playAsync();
 
       if (isEcho) {
         subdominant.setIsLoopingAsync(true);
@@ -188,7 +153,6 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_5.mp3')
       );
       setDominant(sound5);
-      // await dominant.playAsync();
 
       if (isEcho) {
         dominant.setIsLoopingAsync(true);
@@ -200,7 +164,6 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_6.mp3')
       );
       setSubmediant(sound6);
-      // await submediant.playAsync();
 
       if (isEcho) {
         submediant.setIsLoopingAsync(true);
@@ -212,7 +175,6 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_7.mp3')
       );
       setSubTonic(sound7);
-      // await subtonic.playAsync();
 
       if (isEcho) {
         subtonic.setIsLoopingAsync(true);
@@ -223,7 +185,6 @@ const Music = () => {
         require('../assets/sounds/tongue_drum_sounds/MTD_8.mp3')
       );
       setOctave(sound8);
-      // await octave.playAsync();
 
       if (isEcho) {
         octave.setIsLoopingAsync(true);
@@ -298,12 +259,6 @@ const Music = () => {
   };
 
   const [toggleEcho, setToggleEcho] = useState(false);
-
-  // useEffect(() => {
-  //   if (!toggleEcho && superTonic) {
-  //     superTonic.unloadAsync();
-  //   }
-  // }, [toggleEcho])
 
   const toggleFunctionEcho = () => {
     setToggleEcho(!toggleEcho);

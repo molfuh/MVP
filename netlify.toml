@@ -2,7 +2,7 @@
 [build]
   command = "npx expo install react-dom react-native-web @expo/webpack-config"
   functions = "netlify/functions"
-  publish = "dist"
+  publish = "web-build"
 
   ## Uncomment to use this redirect for Single Page Applications like create-react-app.
   ## Not needed for static site generators.
